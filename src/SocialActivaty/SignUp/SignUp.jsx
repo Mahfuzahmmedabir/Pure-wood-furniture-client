@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../AuthPovider/AuthProvider';
 
 const SignUp = () => {
+  const { createNewUser } = useContext(AuthContext)
+  
+
+  const handealSignUp = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value
+    console.log(email, password)
+    createNewUser(email, password)
+      .then(res => {
+        console.log(res.user)
+      alert('aaaa')
+    })
+  }
+
   return (
     <div className=" lg:flex justify-around  lg:mt-44">
       <div className="w-6/12">
@@ -14,11 +30,11 @@ const SignUp = () => {
           <h2 className="text-3xl py-6 font-semibold text-center">
             Sign up Here
           </h2>
-          <form className="fieldset">
+          <form onSubmit={handealSignUp} className="fieldset">
             <label className="fieldset-label">Email</label>
-            <input type="email" className="input" placeholder="Email" />
+            <input name='email' type="email" className="input" placeholder="Email" />
             <label className="fieldset-label">Password</label>
-            <input type="password" className="input" placeholder="Password" />
+            <input name='password' type="password" className="input" placeholder="Password" />
 
             <button className="btn btn-neutral mt-4">Login</button>
           </form>
