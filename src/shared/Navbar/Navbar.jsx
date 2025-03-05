@@ -85,7 +85,7 @@ const Navbar = () => {
                   document.getElementById('my_modal_3').showModal()
                 }
               >
-                open modal
+                Log Out
               </button>
               <dialog id="my_modal_3" className="modal flex justify-end">
                 <div className="modal-box lg:-mt-[460px] mr-3 w-96 lg:mr-10">
@@ -97,10 +97,16 @@ const Navbar = () => {
                   </form>
                   <h3 className="font-bold text-lg text-center">Hello!</h3>
                   <p className="py-4 text-center">{user?.email}</p>
-                  <Link to={'/dashboard'}>Dashboard</Link>
+                  {user.email === import.meta.env.VITE_admin ? (
+                    <h2 className="text-center mb-3">
+                      <Link to={'/dashboard'}>Dashboard</Link>
+                    </h2>
+                  ) : (
+                    ''
+                  )}
                   <button
                     onClick={SignOut}
-                    className="mx-auto text-center flex"
+                    className="mx-auto text-center border px-3 py-1 hover:bg-red-600 hover:text-white rounded-sm flex"
                   >
                     Log Out
                   </button>
@@ -109,8 +115,8 @@ const Navbar = () => {
             </>
           ) : (
             <div>
-              <Link to={'/sign-up'} className="btn">
-                Sign up
+              <Link to={'/login'} className="btn">
+                Log in
               </Link>
             </div>
           )}

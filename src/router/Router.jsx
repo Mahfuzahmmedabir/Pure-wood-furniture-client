@@ -3,6 +3,8 @@ import Main from '../layout/Main/Main';
 import Home from '../Home/Home/Home';
 import SignUp from '../SocialActivaty/SignUp/SignUp';
 import Dashboard from '../Dashboard/Dashboard';
+import Login from '../SocialActivaty/Login/Login';
+import ProtectRoute from './ProtectRoute/ProtectRoute';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: (
+      <ProtectRoute>
+        <Dashboard></Dashboard>
+      </ProtectRoute>
+    ),
+
     children: [
       {
         path: '/dashboard',
@@ -37,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: '/sign-up',
     element: <SignUp></SignUp>,
+  },
+  {
+    path: '/login',
+    element: <Login></Login>,
   },
 ]);
 export default router;

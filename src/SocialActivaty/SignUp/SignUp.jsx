@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthPovider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const SignUp = () => {
   const { createNewUser } = useContext(AuthContext);
@@ -15,9 +15,9 @@ const SignUp = () => {
       const userInfo = { name, email };
       axios.post('http://localhost:5000/user', userInfo).then(res => {
         console.log(res);
-      }); 
+        navigate('/');
+      });
       console.log(res.user);
-      navigate('/dashboard');
     });
   };
   return (
@@ -31,7 +31,7 @@ const SignUp = () => {
       <div className="card bg-base-100   w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body ">
           <h2 className="text-3xl py-6 font-semibold text-center">
-            Sign up Here
+            Create New Account
           </h2>
           <form onSubmit={handealSignUp} className="fieldset">
             <label className=" font-semibold">Name</label>
@@ -48,7 +48,6 @@ const SignUp = () => {
               className="input"
               placeholder="Email"
             />
-
             <label className="font-semibold ">Password</label>
             <input
               name="password"
@@ -56,9 +55,14 @@ const SignUp = () => {
               className="input"
               placeholder="Password"
             />
-
-            <button className="btn btn-neutral mt-4">Login</button>
+            <button className="btn btn-neutral mt-4">Sign Up</button>
           </form>
+          <p className="text-center font-semibold ">
+            Already have an account?
+            <Link to={'/login'} className="text-green-500 px-2">
+              Login here
+            </Link>
+          </p>
         </div>
       </div>
     </div>
