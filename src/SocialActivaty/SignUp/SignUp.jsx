@@ -2,21 +2,30 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthPovider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UseAxiosOpen from '../../hooks/useAxios';
 const SignUp = () => {
   const { createNewUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handealSignUp = e => {
+    const axiosOpen = UseAxiosOpen()
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.name.value;
     console.log(email, password);
-    createNewUser(email, password).then(res => {
+    createNewUser(email, password)
+      .then(res => {
       const userInfo = { name, email };
-      axios.post('http://localhost:5000/user', userInfo).then(res => {
-        console.log(res);
-        navigate('/');
-      });
+      axiosOpen
+        .post(
+          '/user',
+
+          userInfo
+        )
+        .then(res => {
+          console.log(res);
+          navigate('/');
+        });
       console.log(res.user);
     });
   };

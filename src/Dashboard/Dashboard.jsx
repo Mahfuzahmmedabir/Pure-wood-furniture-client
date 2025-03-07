@@ -1,24 +1,7 @@
-// import axios from 'axios';
-// import { useEffect } from 'react';
-import React, { useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+
+import {  Outlet } from 'react-router-dom';
 const Dashboard = () => {
-  // const [admin, setAdmin] = useState([]);
-  // const [isAdmin, setisAdmin] = useState(true)
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/user').then(res => {
-  //     console.log(res.data);
-  //     setAdmin(res.data);
-  //   });
-  // }, []);
-  // console.log(admin);
-  // admin.map(admins => {
-  //   if (admins?.admin) {
-  //       setisAdmin(false);
-  //   } else {
-  //     setisAdmin(true);
-  //   }
-  // })
+  
   return (
     <div>
       

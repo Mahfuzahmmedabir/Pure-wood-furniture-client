@@ -1,4 +1,3 @@
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -76,20 +75,18 @@ const Banner = () => {
         ))}
 
         {/* Custom Navigation Arrows (Hidden on Small Screens) */}
-        <div className="sm:hidden lg:block">
-          <button
-            ref={prevRef}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-600 transition sm:hidden lg:block"
-          >
-            <FaArrowLeft></FaArrowLeft>
-          </button>
-        </div>
 
         <button
-          ref={nextRef}
-          className="absolute  top-1/2 right-4 transform -translate-y-1/2 z-10 bg-gray-800 text-white p-3 rounded-full hover:bg-gray-600 transition sm:hidden lg:block"
+          ref={prevRef}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 border text-white p-3 rounded-full hover:bg-gray-600 hidden md:block lg:block transition"
         >
-          <FaArrowRight />
+          <FaArrowLeft className="font-bold text-2xl"></FaArrowLeft>
+        </button>
+        <button
+          ref={nextRef}
+          className="absolute  top-1/2 right-4 transform -translate-y-1/2 z-10 border text-white p-3 rounded-full hover:bg-gray-600 transition hidden md:block lg:block"
+        >
+          <FaArrowRight className="font-bold text-2xl"></FaArrowRight>
         </button>
       </Swiper>
     </section>
