@@ -5,6 +5,7 @@ import SignUp from '../SocialActivaty/SignUp/SignUp';
 import Dashboard from '../Dashboard/Dashboard';
 import Login from '../SocialActivaty/Login/Login';
 import ProtectRoute from './ProtectRoute/ProtectRoute';
+import AddItems from '../Dashboard/AdminDashboard/AddItems/AddItems';
 
 const router = createBrowserRouter([
   {
@@ -30,14 +31,13 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: (
           <h2>
-            {' '}
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
-            nisi, necessitatibus temporibus dolores sequi quis a quia corrupti
-            doloremque ratione excepturi placeat accusamus distinctio sint porro
-            vero voluptatum facilis nam?
           </h2>
         ),
       },
+      {
+        path: 'add-items',
+        element: <AddItems></AddItems>
+      }
     ],
   },
 
