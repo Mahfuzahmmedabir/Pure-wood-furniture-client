@@ -1,143 +1,172 @@
 
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Card, Input, Typography } from '@material-tailwind/react';
 
-
+import Select from 'react-select';
 import { useState } from 'react';
+import moment from 'moment';
+import Swal from 'sweetalert2';
+
+import { useNavigate } from 'react-router-dom';
 import useAxiosOpen from '../../../hooks/useAxios';
+
 const image_key = import.meta.env.VITE_IMG_HOSTING;
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_key}`;
+
+const options = [
+  { value: 'Sofa', label: 'Sofa' },
+  { value: 'Table', label: 'Table' },
+  { value: 'Chair', label: 'Chair' },
+  { value: 'Bed', label: 'Bed' },
+  { value: 'Cabinet', label: 'Cabinet' },
+];
+
 const AddItems = () => {
-  const axiosOpen = useAxiosOpen()
-  const [formData, setFormData] = useState({
-    title: '',
-    price: '',
-    size: '',
-    category: '',
-    keyFeatures: '',
-    image: null,
-  });
-
-  const categories = ['Sofa', 'Table', 'Chair', 'Bed', 'Cabinet'];
-
-  const handleChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleImageChange = e => {
-    setFormData({ ...formData, image: e.target.files[0] });
-  };
-
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    console.log('Furniture Info:', formData);
-    const images = { image: formData.image };
+  const [selectedOption, setSelectedOption] = useState(null);
+  const object = selectedOption?.value;
+  const categorys = { categorys: object };
+  const { categorys: category } = categorys;
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const date = moment().format('MMMM Do YYYY, h:mm:ss a');
+  const onSubmit = async data => {
+    const axiosOpen = useAxiosOpen();
+    const petInfo = { ...data, category };
+    console.log(petInfo);
+    const images = { image: petInfo.image[0] };
     console.log(images);
     const res = await axiosOpen.post(image_Api, images, {
       headers: {
         'content-type': 'multipart/form-data',
       },
     });
-    alert('aaa');
-    console.log(res.data.data.display_url);
+    console.log(res.data);
+    if (res.data.success) {
+      const furniture = {
+        category: petInfo.category,
+        descriptions: data.descriptions,
+        image: res.data.data.display_url,
+        name: data.title,
+        price: data.price,
+        date: date,
+      };
+      console.log(furniture);
+      fetch(`http://localhost:5000/product`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(furniture),
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          Swal.fire('Add successfully');
+          // navigate('/');;
+        });
+    }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-        Add Furniture
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-gray-700 font-medium">Title</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
+    <div>
+      <div className=" shadow-xl m-10 w-10/12 rounded-lg">
+        <Card className="p-7 pb-20 w-full">
+          <Typography className="text-center" variant="h2" color="blue-gray">
+            Add New Item
+          </Typography>
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2   ">
+            <div className="mb-1 w-full gap-6 ">
+              <div className=" lg:flex gap-10 w-full">
+                <div className="w-6/12">
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Image
+                  </Typography>
+                  <Input
+                    {...register('image', { required: true })}
+                    size="lg"
+                    name="image"
+                    type="file"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  />
+                  {errors.image && (
+                    <span className="-mt-6 text-red-600">
+                      Picture is required
+                    </span>
+                  )}
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Title
+                  </Typography>
+                  <Input
+                    {...register('title', { required: true })}
+                    size="lg"
+                    placeholder="Title"
+                    className=" py-10 !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  />
+                  {errors.name && (
+                    <span className="-mt-6 text-red-600">Name is required</span>
+                  )}
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Price
+                  </Typography>
+                  <Input
+                    {...register('price', { required: false })}
+                    size="lg"
+                    type="number"
+                    placeholder=" Price"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                  />
+                  {errors.age && (
+                    <span className="-mt-6 text-red-600">
+                      {' '}
+                      Price is required{' '}
+                    </span>
+                  )}
+                </div>
 
-        <div>
-          <label className="block text-gray-700 font-medium">Price</label>
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
+                <div className="w-6/12">
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Category
+                  </Typography>
+                  <Select
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    required={true}
+                  />
 
-        <div>
-          <label className="block text-gray-700 font-medium">Size</label>
-          <input
-            type="text"
-            name="size"
-            value={formData.size}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-medium">
-            Upload Image
-          </label>
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-medium">Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          >
-            <option value="">Select Category</option>
-            {categories.map(cat => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-gray-700 font-medium">
-            Key Features
-          </label>
-          <textarea
-            name="keyFeatures"
-            value={formData.keyFeatures}
-            onChange={handleChange}
-            rows="3"
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
-        >
-          Submit
-        </button>
-      </form>
+                  <Typography variant="h6" color="blue-gray" className="py-3">
+                    Description,
+                  </Typography>
+                  <textarea
+                    {...register('descriptions', { required: true })}
+                    size="lg"
+                    type="textarea"
+                    placeholder="Write you description"
+                    className=" !border-t-blue-gray-200 focus:!border-t-gray-900 lg:w-full rounded-md border h-40 p-3 "
+                  />
+                  {errors.descriptions && (
+                    <span className="-mt-6 text-red-600">
+                      descriptions is required
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="bg-black py-2 rounded-xl mt-5  w-36 text-center ">
+                <button className=" font-bold text-white mx-auto   ">
+                  Upload
+                </button>
+              </div>
+            </div>
+          </form>
+        </Card>
+      </div>
     </div>
   );
-}
+};
+
 export default AddItems;
-
-

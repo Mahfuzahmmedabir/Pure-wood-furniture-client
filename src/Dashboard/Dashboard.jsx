@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div>
       <div className="flex">
-        <div className="w-72 bg-base-200  h-screen">
+        <div className="w-72 bg-base-200  h-auto">
           <h2 className="text-center font-semibold text-2xl border-b-2 pb-3">
             Dashboard
           </h2>
@@ -27,15 +27,14 @@ const Dashboard = () => {
             </NavLink>
             <NavLink
               className="flex items-center justify-center gap-1"
-              to={'/'}
+              to={'all-items'}
             >
               <RiAlignItemRightFill />
               All Items
             </NavLink>
           </div>
         </div>
-
-        <div className="">
+        <div className="w-full">
           <Outlet></Outlet>
         </div>
       </div>

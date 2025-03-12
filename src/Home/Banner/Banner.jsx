@@ -45,7 +45,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="w-full h-[500px] sm:h-[400px] xs:h-[300px] relative">
+    <section className="w-full  h-[500px] sm:h-[400px] xs:h-[300px] relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -54,7 +54,7 @@ const Banner = () => {
         className="w-full h-full"
       >
         {slides.map(slide => (
-          <SwiperSlide key={slide.id} className="relative">
+          <SwiperSlide key={slide.id} className="relative z-20">
             <img
               src={slide.image}
               alt={slide.title}

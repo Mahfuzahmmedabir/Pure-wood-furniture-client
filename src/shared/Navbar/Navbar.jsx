@@ -7,9 +7,9 @@ const Navbar = () => {
   console.log(user);
   return (
     <div>
-      <div className="navbar bg-base-100 ">
+      <div className="navbar bg-base-100  ">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown z-50">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 z-50">
             <li>
               <a>All Farniture</a>
             </li>

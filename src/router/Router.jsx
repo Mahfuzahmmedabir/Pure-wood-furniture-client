@@ -6,6 +6,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Login from '../SocialActivaty/Login/Login';
 import ProtectRoute from './ProtectRoute/ProtectRoute';
 import AddItems from '../Dashboard/AdminDashboard/AddItems/AddItems';
+import AllItems from '../Dashboard/AdminDashboard/AllItems/AllItems';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'add-items',
         element: <AddItems></AddItems>
+      },
+      {
+        path: 'all-items',
+        element:<AllItems></AllItems>
       }
     ],
   },
