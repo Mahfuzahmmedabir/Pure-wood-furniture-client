@@ -7,26 +7,26 @@ const Dashboard = () => {
     <div>
       <div className="flex">
         <div className="w-72 bg-base-200  h-auto">
-          <h2 className="text-center font-semibold text-2xl border-b-2 pb-3">
+          <h2 className="text-center sticky top-0 font-semibold text-2xl border-b-2 pb-3">
             Dashboard
           </h2>
-          <div className="text-center leading-8 mt-5">
+          <div className=" fixed justify-center mx-12 leading-8 mt-5">
             <NavLink
-              className="flex items-center justify-center gap-1"
+              className="flex font-semibold text-[17px] items-center justify-center gap-1"
               to={'/'}
             >
               <FaHome />
               Home
             </NavLink>
             <NavLink
-              className="flex items-center justify-center gap-1"
+              className="flex items-center font-semibold text-[17px]  justify-center gap-1"
               to={'add-items'}
             >
               <IoAdd />
               Add Items
             </NavLink>
             <NavLink
-              className="flex items-center justify-center gap-1"
+              className="flex font-semibold text-[17px]  items-center justify-center gap-1"
               to={'all-items'}
             >
               <RiAlignItemRightFill />

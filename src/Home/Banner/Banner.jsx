@@ -5,31 +5,36 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { useEffect, useRef } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
+import image1 from '../../assets/pexels-curtis-adams-1694007-8031904.jpg';
+import image2 from '../../assets/pexels-fotoaibe-1571468.jpg';
+import image3 from '../../assets/pexels-fotoaibe-1643383.jpg';
+import image4 from '../../assets/pexels-quintingellar-313776.jpg';
+
 const Banner = () => {
   const slides = [
     {
       id: 1,
       title: 'Elegant Wooden Furniture',
       description: 'Upgrade your home with premium wooden furniture.',
-      image: '/images/banner1.jpg',
+      image: image1,
     },
     {
       id: 2,
       title: 'Modern & Stylish Designs',
       description: 'Find the perfect blend of style and comfort.',
-      image: '/images/banner2.jpg',
+      image: image2,
     },
     {
       id: 3,
       title: 'Eco-Friendly & Sustainable',
       description: 'Beautiful furniture made with sustainability in mind.',
-      image: '/images/banner3.jpg',
+      image: image3,
     },
     {
       id: 4,
       title: 'Luxury Living, Affordable Prices',
       description: 'Experience high-end furniture at budget-friendly rates.',
-      image: '/images/banner4.jpg',
+      image: image4,
     },
   ];
 
@@ -45,7 +50,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="w-full  h-[500px] sm:h-[400px] xs:h-[300px] relative">
+    <section className="w-full lg:h-[600px] sm:h-[400px] xs:h-[300px] relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -60,7 +65,7 @@ const Banner = () => {
               alt={slide.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center text-white px-4">
+            <div className="absolute inset-0 bg-black/25 flex flex-col justify-center items-center text-center text-white px-4">
               <h2 className="text-4xl sm:text-3xl xs:text-2xl font-bold">
                 {slide.title}
               </h2>

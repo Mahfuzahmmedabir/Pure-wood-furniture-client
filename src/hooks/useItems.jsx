@@ -5,7 +5,7 @@ const useItems = () => {
   const { data: furniture = [], refetch } = useQuery({
     queryKey: ['furniture'],
     queryFn: async () => {
-      const res = await axiosOpen.get('/product');
+      const res = await axiosOpen.get('/products');
       return res.data
     }
   });

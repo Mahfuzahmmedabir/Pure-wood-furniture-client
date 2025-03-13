@@ -1,10 +1,22 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthPovider/AuthProvider';
+import Dashboard from '../../Dashboard/Dashboard';
 
 const Navbar = () => {
   const { user, SignOut } = useContext(AuthContext);
   console.log(user);
+  const links = (
+    <div className="font-bold gap-5 flex">
+      <NavLink to={'/'}>Home</NavLink>
+      <NavLink to={'/to'}>All Furniture</NavLink>
+      <NavLink>Table</NavLink>
+      <NavLink>Table</NavLink>
+      <NavLink>Table</NavLink>
+      <NavLink to={'/dashboard'}>Dashboard</NavLink>
+      {/* <Dashboard to={'/dea'}></Dashboard> */}
+    </div>
+  );
   return (
     <div>
       <div className="navbar bg-base-100  ">
@@ -54,27 +66,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 z-50">
-            <li>
-              <a>All Farniture</a>
-            </li>
-            <li>
-              <details>
-                <summary>Home Farniture</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1 gap-6 z-50">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (

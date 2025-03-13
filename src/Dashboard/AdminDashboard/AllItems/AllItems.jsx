@@ -10,15 +10,104 @@ import {
   IconButton,
   Tooltip,
 } from '@material-tailwind/react';
+import useAxiosOpen from '../../../hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const TABLE_HEAD = ['Furniture', '', 'Date', 'Edit', 'Delete', ''];
 
 const AllItems = () => {
-  const [furniture] = useItems();
+  const [furniture, refetch] = useItems();
+  const axionOpen = useAxiosOpen()
   console.log(furniture);
+  const handealDelete = async (id) => {
+
+
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!',
+}).then(result => {
+  if (result.isConfirmed) {
+    axionOpen.delete(`product/${id}`)
+      .then(res => {
+      res.data;
+      refetch();
+      Swal.fire({
+        title: 'Deleted!',
+        text: 'Your file has been deleted.',
+        icon: 'success',
+      });
+    });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // alert(id)
+    //  await axionOpen.delete(`product/${id}`)
+    //   .then(res => {
+    //     console.log(res.data)
+    // });
+    
+  }
+
+
   return (
     <div>
-      <Card className="h-full w-full">
+      <Card className="h-full  shadow-lg px-3">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
             <div>
@@ -54,7 +143,7 @@ const AllItems = () => {
             <tbody>
               {furniture?.map(
                 (
-                  { image, name, amount, date, account, accountNumber, expiry },
+                  { image, name, amount, date, _id, accountNumber, expiry },
                   index
                 ) => {
                   const isLast = index === furniture.length - 1;
@@ -71,7 +160,7 @@ const AllItems = () => {
                             src={image}
                             alt={name}
                             size="md"
-                            className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
+                            className="border w-20 border-blue-gray-50  object-contain "
                           />
                           <Typography
                             variant="small"
@@ -108,32 +197,9 @@ const AllItems = () => {
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div className=" w-16  bg-red-600 rounded-md border border-blue-gray-50 p-1 text-white">
-                            <button className="">Delete</button>
-                          </div>
-                          <div className="flex flex-col">
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal capitalize"
-                            >
-                              {account?.split('-').join(' ')} {accountNumber}
-                            </Typography>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal opacity-70"
-                            >
-                              {expiry}
-                            </Typography>
+                            <button onClick={() => handealDelete(_id)} className="">Delete</button>
                           </div>
                         </div>
-                      </td>
-                      <td className={classes}>
-                        <Tooltip content="Edit User">
-                          <IconButton variant="text">
-                            {/* <PencilIcon className="h-4 w-4" /> */}
-                          </IconButton>
-                        </Tooltip>
                       </td>
                     </tr>
                   );

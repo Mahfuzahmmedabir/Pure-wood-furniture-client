@@ -7,6 +7,7 @@ import Login from '../SocialActivaty/Login/Login';
 import ProtectRoute from './ProtectRoute/ProtectRoute';
 import AddItems from '../Dashboard/AdminDashboard/AddItems/AddItems';
 import AllItems from '../Dashboard/AdminDashboard/AllItems/AllItems';
+import FurnitureDetails from '../Page/FurnitureDetails/FurnitureDetails';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: '/details/:id',
+        element: <FurnitureDetails></FurnitureDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
     ],
   },
@@ -30,19 +37,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: (
-          <h2>
-          </h2>
-        ),
+        element: <h2>Welcome to Dashboard</h2>,
       },
       {
         path: 'add-items',
-        element: <AddItems></AddItems>
+        element: <AddItems></AddItems>,
       },
       {
         path: 'all-items',
-        element:<AllItems></AllItems>
-      }
+        element: <AllItems></AllItems>,
+      },
     ],
   },
 
