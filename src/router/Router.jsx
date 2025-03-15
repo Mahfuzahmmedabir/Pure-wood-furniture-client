@@ -52,12 +52,7 @@ const router = createBrowserRouter([
         path: 'all-items',
         element: <AllItems></AllItems>,
       },
-      // {
-      //   path: 'updeat-product/:id',
-      //   element: <UpdeatProduct></UpdeatProduct>,
-      //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/product/${params.id}`),
-      // },
+   
     ],
   },
 

@@ -63,20 +63,7 @@ const AddItems = () => {
         console.log(res.data);
         Swal.fire('Add successfully');
       });
-      // fetch(`http://localhost:5000/product`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'content-type': 'application/json',
-      //   },
-      //   body: JSON.stringify(furniture),
-      // })
-      //   .then(res => res.json())
-      //   .then(data => {
-      //     console.log(data);
-      //     Swal.fire('Add successfully');
-      //     // navigate('/');
-      //     data = ''
-      //   });
+     
       setLogin(false);
     }
   };
