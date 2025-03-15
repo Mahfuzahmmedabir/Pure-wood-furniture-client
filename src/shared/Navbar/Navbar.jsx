@@ -10,15 +10,11 @@ const Navbar = () => {
     <div className="font-bold gap-5 flex">
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/to'}>All Furniture</NavLink>
-      <NavLink>Table</NavLink>
-      <NavLink>Table</NavLink>
-      <NavLink>Table</NavLink>
-      <NavLink to={'/dashboard'}>Dashboard</NavLink>
-      {/* <Dashboard to={'/dea'}></Dashboard> */}
+      <NavLink to={'/shop'}>Shop</NavLink>
     </div>
   );
   return (
-    <div>
+    <div className="sticky top-0 z-50 ">
       <div className="navbar bg-base-100  ">
         <div className="navbar-start">
           <div className="dropdown z-50">

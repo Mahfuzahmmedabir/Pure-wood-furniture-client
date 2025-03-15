@@ -6,8 +6,8 @@ const Dashboard = () => {
   return (
     <div>
       <div className="flex">
-        <div className="w-72 bg-base-200  h-auto">
-          <h2 className="text-center sticky top-0 font-semibold text-2xl border-b-2 pb-3">
+        <div className="w-72 bg-base-300 sticky top-0 z-50 h-screen">
+          <h2 className="text-center   font-semibold text-2xl border-b-2 pb-3">
             Dashboard
           </h2>
           <div className=" fixed justify-center mx-12 leading-8 mt-5">

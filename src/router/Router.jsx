@@ -8,11 +8,14 @@ import ProtectRoute from './ProtectRoute/ProtectRoute';
 import AddItems from '../Dashboard/AdminDashboard/AddItems/AddItems';
 import AllItems from '../Dashboard/AdminDashboard/AllItems/AllItems';
 import FurnitureDetails from '../Page/FurnitureDetails/FurnitureDetails';
+import UpdeatProduct from '../Dashboard/AdminDashboard/UpdeatProduct/UpdeatProduct';
+import ErrowPage from '../Components/ErrorPage/ErrowPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
+    errorElement: <ErrowPage></ErrowPage>,
     children: [
       {
         path: '/',
@@ -37,7 +40,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <h2>Welcome to Dashboard</h2>,
+        element: (
+          <h2 className="text-5xl text-center mt-10">Welcome to Dashboard</h2>
+        ),
       },
       {
         path: 'add-items',
@@ -47,6 +52,12 @@ const router = createBrowserRouter([
         path: 'all-items',
         element: <AllItems></AllItems>,
       },
+      // {
+      //   path: 'updeat-product/:id',
+      //   element: <UpdeatProduct></UpdeatProduct>,
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/product/${params.id}`),
+      // },
     ],
   },
 
@@ -57,6 +68,11 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login></Login>,
+  },
+  {
+    path: 'updeat-product/:id',
+    element: <UpdeatProduct></UpdeatProduct>,
+    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
   },
 ]);
 export default router;

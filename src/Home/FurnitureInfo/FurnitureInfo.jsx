@@ -7,8 +7,7 @@ const FurnitureInfo = () => {
   console.log(furniture);
   return (
     <div>
-      {furniture.length}
-      <div className="grid   gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid  grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         {furniture?.map(item => (
           <Cards items={item} key={item._id}></Cards>
         ))}

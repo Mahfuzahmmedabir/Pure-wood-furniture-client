@@ -12,6 +12,7 @@ import {
 } from '@material-tailwind/react';
 import useAxiosOpen from '../../../hooks/useAxios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const TABLE_HEAD = ['Furniture', '', 'Date', 'Edit', 'Delete', ''];
 
@@ -46,61 +47,6 @@ Swal.fire({
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // alert(id)
-    //  await axionOpen.delete(`product/${id}`)
-    //   .then(res => {
-    //     console.log(res.data)
-    // });
     
   }
 
@@ -191,13 +137,18 @@ Swal.fire({
                       </td>
                       <td className={classes}>
                         <div className="w-max">
-                          <button>Edit</button>
+                          <Link to={`updeat-product/${_id}`}>Edit</Link>
                         </div>
                       </td>
                       <td className={classes}>
                         <div className="flex items-center gap-3">
                           <div className=" w-16  bg-red-600 rounded-md border border-blue-gray-50 p-1 text-white">
-                            <button onClick={() => handealDelete(_id)} className="">Delete</button>
+                            <button
+                              onClick={() => handealDelete(_id)}
+                              className=""
+                            >
+                              Delete
+                            </button>
                           </div>
                         </div>
                       </td>

@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 const ProtectRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
+  
   if (loading) {
     return (
       <>

@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-5">
           {/* Brand Info */}
           <div>
-            <h2 className="text-2xl font-bold">FurniStyle</h2>
+            <h2 className="text-2xl font-bold">Pure Wood</h2>
             <p className="text-sm mt-3">
               Elegant, durable, and stylish furniture for your home and office.
               Crafted with passion, designed for comfort.
@@ -136,7 +136,7 @@ const Footer = () => {
               <FaPhoneAlt className="text-green-400"></FaPhoneAlt> +123 456 7890
             </p>
             <p className="text-[17px] flex  items-center gap-2">
-              <MdEmail /> support@furnistyle.com
+              <MdEmail /> support@purewood.com
             </p>
 
             {/* Social Media Links */}
@@ -165,7 +165,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center text-gray-400 text-sm mt-8 border-t border-gray-700 pt-4">
-          &copy; {new Date().getFullYear()} FurniStyle. All rights reserved.
+          &copy; {new Date().getFullYear()} Pure Wood. All rights reserved.
         </div>
       </footer>
     </div>

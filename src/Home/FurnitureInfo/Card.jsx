@@ -8,24 +8,35 @@ import {
   Button,
 } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 const Cards = ({ items }) => {
   console.log(items);
   return (
-    <div>
-      <Card className="mt-6 ">
-        <CardHeader color="blue-gray" className="relative h-56">
+    <div data-aos="zoom-in-up" className="p-5">
+      <Card className=" ">
+        <div color="blue-gray" className="relative h-56">
           <Link to={`/details/${items._id}`}>
-            <img className="w-96 h-56" src={items.image} alt="card-image" />
+            <img
+              className="w-[500px]  h-56  transition-transform duration-300 hover:scale-110"
+              src={items.image}
+              alt="card-image"
+            />
           </Link>
-        </CardHeader>
+        </div>
         <CardBody>
-          <Typography variant="h5" color="blue-gray" className="mb-2">
-            UI/UX Review Check
+          <Typography
+            variant="h6"
+            color="blue-gray"
+            className="lg:mb-2 text-center -mt-2 "
+          >
+            {items.name}
           </Typography>
+          <p className="text-center font-semibold">TK: {items.price}</p>
         </CardBody>
-        <CardFooter className="pt-0">
-          <Button>Read More</Button>
-        </CardFooter>
       </Card>
     </div>
   );
