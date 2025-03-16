@@ -7,8 +7,6 @@ import {
   Typography,
   CardBody,
   Avatar,
-  IconButton,
-  Tooltip,
 } from '@material-tailwind/react';
 import useAxiosOpen from '../../../hooks/useAxios';
 import Swal from 'sweetalert2';
@@ -21,8 +19,6 @@ const AllItems = () => {
   const axionOpen = useAxiosOpen()
   console.log(furniture);
   const handealDelete = async (id) => {
-
-
 Swal.fire({
   title: 'Are you sure?',
   text: "You won't be able to revert this!",
@@ -45,12 +41,7 @@ Swal.fire({
     });
   }
 });
-
-
-    
   }
-
-
   return (
     <div>
       <Card className="h-full  shadow-lg px-3">
@@ -137,7 +128,7 @@ Swal.fire({
                       </td>
                       <td className={classes}>
                         <div className="w-max">
-                          <Link to={`updeat-product/${_id}`}>Edit</Link>
+                          <Link>Edit</Link>
                         </div>
                       </td>
                       <td className={classes}>

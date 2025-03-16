@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         path: '/details/:id',
         element: <FurnitureDetails></FurnitureDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(`https://furniture-server-ten.vercel.app/product/${params.id}`),
       },
     ],
   },
@@ -52,7 +52,6 @@ const router = createBrowserRouter([
         path: 'all-items',
         element: <AllItems></AllItems>,
       },
-   
     ],
   },
 
@@ -67,7 +66,8 @@ const router = createBrowserRouter([
   {
     path: 'updeat-product/:id',
     element: <UpdeatProduct></UpdeatProduct>,
-    loader: ({ params }) => fetch(`http://localhost:5000/product/${params.id}`),
+    loader: ({ params }) =>
+      fetch(`https://furniture-server-ten.vercel.app/product/${params.id}`),
   },
 ]);
 export default router;

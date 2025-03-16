@@ -50,7 +50,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className="w-full lg:h-[600px] sm:h-[400px] xs:h-[300px] relative">
+    <section className="w-full lg:h-[600px] sm:h-[400px] xs:h-[300px] ">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={{ clickable: true }}

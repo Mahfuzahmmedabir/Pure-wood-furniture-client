@@ -1,11 +1,8 @@
 import React from 'react';
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Typography,
-  Button,
 } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +15,7 @@ const Cards = ({ items }) => {
   return (
     <div data-aos="zoom-in-up" className="p-5">
       <Card className=" ">
-        <div color="blue-gray" className="relative h-56">
+        <div color="blue-gray" className="relative ">
           <Link to={`/details/${items._id}`}>
             <img
               className="w-[500px]  h-56  transition-transform duration-300 hover:scale-110"

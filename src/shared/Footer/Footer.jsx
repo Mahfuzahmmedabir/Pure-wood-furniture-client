@@ -5,62 +5,9 @@ import { ImFacebook2 } from 'react-icons/im';
 import { MdEmail } from 'react-icons/md';
 
 const Footer = () => {
-  return (
-    <div>
-      {/* <footer class="bg-gray-900 text-white py-10">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-5">
-    
-   
-    <div>
-      <h2 class="text-2xl font-bold">FurniStyle</h2>
-      <p class="text-sm mt-3">Elegant, durable, and stylish furniture for your home and office. Crafted with passion, designed for comfort.</p>
-    </div>
-
-  
-    <div>
-      <h3 class="text-lg font-semibold">Quick Links</h3>
-      <ul class="mt-3 space-y-2">
-        <li><a href="#" class="hover:text-gray-400">Home</a></li>
-        <li><a href="#" class="hover:text-gray-400">Shop</a></li>
-        <li><a href="#" class="hover:text-gray-400">About Us</a></li>
-        <li><a href="#" class="hover:text-gray-400">Contact</a></li>
-      </ul>
-    </div>
-
-  
-    <div>
-      <h3 class="text-lg font-semibold">Customer Support</h3>
-      <ul class="mt-3 space-y-2">
-        <li><a href="#" class="hover:text-gray-400">FAQs</a></li>
-        <li><a href="#" class="hover:text-gray-400">Shipping & Returns</a></li>
-        <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
-        <li><a href="#" class="hover:text-gray-400">Terms & Conditions</a></li>
-      </ul>
-    </div>
-
-   
-    <div>
-      <h3 class="text-lg font-semibold">Contact Us</h3>
-      <p class="mt-3 text-sm">📍 123 Furniture St, City, Country</p>
-      <p class="text-sm">📞 +123 456 7890</p>
-      <p class="text-sm">✉ support@furnistyle.com</p>
-      
-     
-      <div class="mt-4 flex space-x-4">
-        <a href="#" class="hover:text-gray-400">🔵 Facebook</a>
-        <a href="#" class="hover:text-gray-400">📸 Instagram</a>
-        <a href="#" class="hover:text-gray-400">🐦 Twitter</a>
-      </div>
-    </div>
-
-  </div>
-
  
-  <div class="text-center text-gray-400 text-sm mt-8 border-t border-gray-700 pt-4">
-    &copy; 2025 FurniStyle. All rights reserved.
-  </div>
-</footer> */}
-
+  return (
+    <div className="bg-red-700  ">
       <footer className="bg-gray-900 text-white py-10">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-5">
           {/* Brand Info */}
