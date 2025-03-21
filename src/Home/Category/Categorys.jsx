@@ -8,7 +8,6 @@ import {
 } from '@material-tailwind/react';
 import useItems from '../../hooks/useItems';
 import FurnitureInfo from '../FurnitureInfo/FurnitureInfo';
-
 const Categorys = () => {
   const [isActiveTab, setActiveTab] = useState('');
   console.log(isActiveTab);
@@ -48,39 +47,43 @@ const Categorys = () => {
     },
   ];
   return (
-    <Tabs value="" className="">
-      <TabsHeader
-        className="cursor-pointer"
-        indicatorProps={{
-          className: ' shadow-none !text-gray-900',
-        }}
-      >
-        {data.map(({ label, value }) => (
-          <Tab
-            key={value}
-            value={value}
-            onClick={() => setActiveTab(value)}
-            className={isActiveTab === value ? 'bg-base-300' : ''}
-          >
-            {label}
-          </Tab>
-        ))}
-      </TabsHeader>
-      {isActiveTab ? (
-        ''
-      ) : (
-        <>
-          <FurnitureInfo items={furniture}></FurnitureInfo>
-        </>
-      )}
-      <TabsBody>
-        {data.map(({ value, desc }) => (
-          <TabPanel key={value} value={value}>
-            {desc}
-          </TabPanel>
-        ))}
-      </TabsBody>
-    </Tabs>
+    <div>
+      <h2 className="text-center text-4xl my-6 font-semibold">
+        Select Your Item
+      </h2>
+      <Tabs className="">
+        <TabsHeader className="cursor-pointer font-bold">
+          {data.map(({ label, value }) => (
+            <Tab
+              key={value}
+              value={value}
+              onClick={() => setActiveTab(value)}
+              className={
+                isActiveTab === value
+                  ? 'bg-base-300 font-semibold rounded-2xl lg:text-xl'
+                  : 'font-semibold lg:text-xl'
+              }
+            >
+              {label}
+            </Tab>
+          ))}
+        </TabsHeader>
+        {isActiveTab ? (
+          ''
+        ) : (
+          <>
+            <FurnitureInfo items={furniture}></FurnitureInfo>
+          </>
+        )}
+        <TabsBody>
+          {data.map(({ value, desc }) => (
+            <TabPanel key={value} value={value}>
+              {desc}
+            </TabPanel>
+          ))}
+        </TabsBody>
+      </Tabs>
+    </div>
   );
 };
 

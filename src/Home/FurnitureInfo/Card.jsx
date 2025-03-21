@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  Card,
-  CardBody,
-  Typography,
-} from '@material-tailwind/react';
+import { Card, CardBody, Typography } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
@@ -13,12 +8,13 @@ AOS.init();
 const Cards = ({ items }) => {
   console.log(items);
   return (
-    <div data-aos="zoom-in-up" className="p-5">
+    <div data-aos="zoom-in-up" className="p-5 ">
+      
       <Card className=" ">
-        <div color="blue-gray" className="relative ">
+        <div color="blue-gray" className=" ">
           <Link to={`/details/${items._id}`}>
             <img
-              className="w-[500px]  h-56  transition-transform duration-300 hover:scale-110"
+              className="w-[500px] h-56 transition-transform duration-300 hover:scale-110"
               src={items.image}
               alt="card-image"
             />
@@ -38,5 +34,4 @@ const Cards = ({ items }) => {
     </div>
   );
 };
-
 export default Cards;

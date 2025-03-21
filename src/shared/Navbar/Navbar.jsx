@@ -7,11 +7,11 @@ const Navbar = () => {
   const { user, SignOut } = useContext(AuthContext);
   console.log(user);
   const links = (
-    <div className="font-bold gap-5 flex">
+    <>
       <NavLink to={'/'}>Home</NavLink>
       <NavLink to={'/to'}>All Furniture</NavLink>
       <NavLink to={'/shop'}>Shop</NavLink>
-    </div>
+    </>
   );
   return (
     <div className="sticky top-0 z-50 ">
@@ -36,25 +36,9 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu  dropdown-content bg-base-100 rounded-box z-[1]   mt-3 w-52 p-2 flex-none shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
           <a className="btn poppins-black-italic text-2xl btn-ghost ">
@@ -62,7 +46,9 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-6 z-50">{links}</ul>
+          <ul className="menu menu-horizontal font-semibold flex  px-10 gap-6 z-50">
+            {links}
+          </ul>
         </div>
         <div className="navbar-end">
           {user ? (
